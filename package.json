@@ -1,8 +1,9 @@
 {
-  "dependencies": {
-    "express": "^4.19.2"
-  },
-  "scripts": {
-    "start": "node app.js"
-  }
+    "dependencies": {
+        "convert-csv-to-json": "^2.46.0",
+        "express": "^4.19.2"
+    },
+    "scripts": {
+        "start": "node app.js"
+    }
 }

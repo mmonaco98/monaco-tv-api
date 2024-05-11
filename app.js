@@ -2,32 +2,51 @@ const express = require("express");
 const app = express();
 const port = 8000;
 
-const csvToJson = require("convert-csv-to-json");
+const fs = require("fs");
 
-const moviesData = csvToJson
-    .fieldDelimiter(",")
-    .getJsonFromCsv("src/data/mubi_movie_data.csv");
+const MOVIE_DATA = JSON.parse(fs.readFileSync("./src/data/movie_data.json"))[
+    "data"
+];
+
+//const csvToJson = require("convert-csv-to-json");
+
+// const moviesData = csvToJson
+//     .fieldDelimiter(",")
+//     .getJsonFromCsv("src/data/mubi_movie_data.csv");
+
+//
+// fs.writeFile(
+//     "./src/data/movie_data.json",
+//     JSON.stringify(data),
+//     function (err) {
+//         if (err) {
+//             console.log(err);
+//         }
+//     }
+// );
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
 
-app.get("/movie/byId", (req, res) => {
+app.get("/getMovieData/byId", (req, res) => {
     const id = req.query.id;
-    const movie = moviesData.find((p) => p.movie_id == id);
+    const movie = MOVIE_DATA.find((p) => p.movie_id == id);
     if (movie) {
         res.json(movie);
     } else {
-        res.status(404).send("Post not found");
+        res.status(404).send("Movie not found");
     }
 });
 
-app.get("/movies/byTitle", (req, res) => {
+app.get("/search/byTitle", (req, res) => {
     const title = req.query.title;
-    const movies = moviesData.filter((p) => p.movie_title.includes(title));
+    const movies = MOVIE_DATA.filter((p) =>
+        p.movie_title.toLowerCase.includes(title.toLowerCase)
+    );
     if (movies) {
         res.json(movies);
     } else {
-        res.status(404).send("Post not found");
+        res.status(404).send("Movies not found");
     }
 });

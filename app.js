@@ -91,8 +91,9 @@ app.get("/getMovieData/byId", (req, res) => {
 app.get("/search/byTitle", (req, res) => {
     const title = req.query.title;
     const movies = MOVIE_DATA.filter((p) =>
-        p.movie_title.toLowerCase.includes(title.toLowerCase)
+        p.movie_title.toLowerCase().includes(title.toLowerCase())
     );
+    movies.sort((a, b) => b.movie_popularity.localeCompare(a.movie_popularity));
     if (movies) {
         res.json(movies);
     } else {

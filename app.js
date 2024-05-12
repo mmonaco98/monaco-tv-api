@@ -8,6 +8,10 @@ const MOVIE_DATA = JSON.parse(fs.readFileSync("./src/data/movie_data.json"))[
     "data"
 ];
 
+const HOMEPAGE_DATA = JSON.parse(fs.readFileSync("./src/data/homepage.json"))[
+    "getHomepages"
+];
+
 //const csvToJson = require("convert-csv-to-json");
 
 // const moviesData = csvToJson
@@ -46,6 +50,16 @@ app.get("/search/byTitle", (req, res) => {
     );
     if (movies) {
         res.json(movies);
+    } else {
+        res.status(404).send("Movies not found");
+    }
+});
+
+app.get("/homepage/byUserId", (req, res) => {
+    const userId = req.query.userId;
+    const homepage = HOMEPAGE_DATA.find((p) => p.user_id == userId);
+    if (homepage) {
+        res.json(homepage);
     } else {
         res.status(404).send("Movies not found");
     }

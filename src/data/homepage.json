@@ -1,0 +1,865 @@
+{
+    "getHomepages": [
+        {
+            "user_id": "1",
+            "sections": [
+                {
+                    "title": "section n1",
+                    "type": "PosterCard",
+                    "data": [
+                        {
+                            "movie_id": 9,
+                            "movie_title": "Young Yakuza",
+                            "movie_release_year": 2007,
+                            "movie_url": "http://mubi.com/films/young-yakuza",
+                            "movie_title_language": "en",
+                            "movie_popularity": 17,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/9/cache-7934-1581390744/image-w1280.jpg",
+                            "director_id": 127,
+                            "director_name": "Jean-Pierre Limosin",
+                            "director_url": "http://mubi.com/cast/jean-pierre-limosin"
+                        },
+                        {
+                            "movie_id": 10,
+                            "movie_title": "The Return",
+                            "movie_release_year": 2003,
+                            "movie_url": "http://mubi.com/films/the-return",
+                            "movie_title_language": "en",
+                            "movie_popularity": 1236,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/10/cache-7935-1577347218/image-w1280.jpg",
+                            "director_id": 27,
+                            "director_name": "Andrey Zvyagintsev",
+                            "director_url": "http://mubi.com/cast/andrey-zvyagintsev"
+                        },
+                        {
+                            "movie_id": 11,
+                            "movie_title": "Il grido",
+                            "movie_release_year": 1957,
+                            "movie_url": "http://mubi.com/films/il-grido",
+                            "movie_title_language": "en",
+                            "movie_popularity": 178,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/11/cache-35194-1527231603/image-w1280.jpg",
+                            "director_id": 36,
+                            "director_name": "Michelangelo Antonioni",
+                            "director_url": "http://mubi.com/cast/michelangelo-antonioni"
+                        },
+                        {
+                            "movie_id": 12,
+                            "movie_title": "The General",
+                            "movie_release_year": 1926,
+                            "movie_url": "http://mubi.com/films/the-general",
+                            "movie_title_language": "en",
+                            "movie_popularity": 3124,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/12/cache-47268-1553090423/image-w1280.jpg",
+                            "director_id": "46, 47",
+                            "director_name": "Buster Keaton, Clyde Bruckman",
+                            "director_url": "http://mubi.com/cast/buster-keaton, http://mubi.com/cast/clyde-bruckman"
+                        },
+                        {
+                            "movie_id": 13,
+                            "movie_title": "L'Age d'Or",
+                            "movie_release_year": 1930,
+                            "movie_url": "http://mubi.com/films/lage-dor",
+                            "movie_title_language": "en",
+                            "movie_popularity": 898,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/13/cache-7936-1552914935/image-w1280.jpg",
+                            "director_id": 56,
+                            "director_name": "Luis Buñuel",
+                            "director_url": "http://mubi.com/cast/luis-bunuel"
+                        },
+                        {
+                            "movie_id": 14,
+                            "movie_title": "Les bonnes femmes",
+                            "movie_release_year": 1960,
+                            "movie_url": "http://mubi.com/films/the-good-time-girls",
+                            "movie_title_language": "en",
+                            "movie_popularity": 167,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/14/cache-37942-1556629152/image-w1280.jpg",
+                            "director_id": 62,
+                            "director_name": "Claude Chabrol",
+                            "director_url": "http://mubi.com/cast/claude-chabrol"
+                        }
+                    ]
+                },
+                {
+                    "title": "section n2",
+                    "type": "VideoCard",
+                    "data": [
+                        {
+                            "movie_id": 1,
+                            "movie_title": "La Antena",
+                            "movie_release_year": 2007,
+                            "movie_url": "http://mubi.com/films/la-antena",
+                            "movie_title_language": "en",
+                            "movie_popularity": 105,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/1/cache-7927-1581389497/image-w1280.jpg",
+                            "director_id": 131,
+                            "director_name": "Esteban Sapir",
+                            "director_url": "http://mubi.com/cast/esteban-sapir"
+                        },
+                        {
+                            "movie_id": 2,
+                            "movie_title": "Elementary Particles",
+                            "movie_release_year": 2006,
+                            "movie_url": "http://mubi.com/films/elementary-particles",
+                            "movie_title_language": "en",
+                            "movie_popularity": 23,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/2/cache-512179-1581389841/image-w1280.jpg",
+                            "director_id": 73,
+                            "director_name": "Oskar Roehler",
+                            "director_url": "http://mubi.com/cast/oskar-roehler"
+                        },
+                        {
+                            "movie_id": 3,
+                            "movie_title": "It's Winter",
+                            "movie_release_year": 2006,
+                            "movie_url": "http://mubi.com/films/its-winter",
+                            "movie_title_language": "en",
+                            "movie_popularity": 21,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/3/cache-7929-1481539519/image-w1280.jpg",
+                            "director_id": 82,
+                            "director_name": "Rafi Pitts",
+                            "director_url": "http://mubi.com/cast/rafi-pitts"
+                        },
+                        {
+                            "movie_id": 4,
+                            "movie_title": "Kirikou and the Wild Beasts",
+                            "movie_release_year": 2005,
+                            "movie_url": "http://mubi.com/films/kirikou-and-the-wild-beasts",
+                            "movie_title_language": "en",
+                            "movie_popularity": 46,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/4/cache-7930-1568880017/image-w1280.jpg",
+                            "director_id": "89, 90",
+                            "director_name": "Michel Ocelot, Bénédicte Galup",
+                            "director_url": "http://mubi.com/cast/michel-ocelot, http://mubi.com/cast/benedicte-galup"
+                        },
+                        {
+                            "movie_id": 5,
+                            "movie_title": "Padre Nuestro",
+                            "movie_release_year": 2007,
+                            "movie_url": "http://mubi.com/films/padre-nuestro",
+                            "movie_title_language": "en",
+                            "movie_popularity": 7,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/5/cache-7931-1581390636/image-w1280.jpg",
+                            "director_id": 92,
+                            "director_name": "Christopher Zalla",
+                            "director_url": "http://mubi.com/cast/christopher-zalla"
+                        },
+                        {
+                            "movie_id": 6,
+                            "movie_title": "The Perfume of the Lady in Black",
+                            "movie_release_year": 2005,
+                            "movie_url": "http://mubi.com/films/the-perfume-of-the-lady-in-black",
+                            "movie_title_language": "en",
+                            "movie_popularity": 6,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/6/cache-7932-1481539523/image-w1280.jpg",
+                            "director_id": 102,
+                            "director_name": "Bruno Podalydès",
+                            "director_url": "http://mubi.com/cast/bruno-podalydes"
+                        },
+                        {
+                            "movie_id": 7,
+                            "movie_title": "Riviera",
+                            "movie_release_year": 2005,
+                            "movie_url": "http://mubi.com/films/riviera",
+                            "movie_title_language": "en",
+                            "movie_popularity": 5,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/7/cache-47389-1476185879/image-w1280.jpg",
+                            "director_id": 109,
+                            "director_name": "Anne Villacèque",
+                            "director_url": "http://mubi.com/cast/anne-villaceque"
+                        },
+                        {
+                            "movie_id": 8,
+                            "movie_title": "Someone Else's Happiness",
+                            "movie_release_year": 2005,
+                            "movie_url": "http://mubi.com/films/someone-elses-happiness",
+                            "movie_title_language": "en",
+                            "movie_popularity": 8,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/8/cache-113933-1476185868/image-w1280.jpg",
+                            "director_id": 118,
+                            "director_name": "Fien Troch",
+                            "director_url": "http://mubi.com/cast/fien-troch"
+                        }
+                    ]
+                },
+                {
+                    "title": "section n3",
+                    "type": "PosterCard",
+                    "data": [
+                        {
+                            "movie_id": 15,
+                            "movie_title": "Cops",
+                            "movie_release_year": 1922,
+                            "movie_url": "http://mubi.com/films/cops",
+                            "movie_title_language": "en",
+                            "movie_popularity": 237,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/15/cache-91101-1481539543/image-w1280.jpg",
+                            "director_id": "46, 23290",
+                            "director_name": "Buster Keaton, Edward F. Cline",
+                            "director_url": "http://mubi.com/cast/buster-keaton, http://mubi.com/cast/edward-f-cline"
+                        },
+                        {
+                            "movie_id": 16,
+                            "movie_title": "Tokyo Eyes",
+                            "movie_release_year": 1998,
+                            "movie_url": "http://mubi.com/films/tokyo-eyes",
+                            "movie_title_language": "en",
+                            "movie_popularity": 23,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/16/cache-91605-1476185899/image-w1280.jpg",
+                            "director_id": 127,
+                            "director_name": "Jean-Pierre Limosin",
+                            "director_url": "http://mubi.com/cast/jean-pierre-limosin"
+                        },
+                        {
+                            "movie_id": 17,
+                            "movie_title": "Dead in 3 Days",
+                            "movie_release_year": 2006,
+                            "movie_url": "http://mubi.com/films/dead-in-3-days",
+                            "movie_title_language": "en",
+                            "movie_popularity": 12,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/17/cache-7939-1481539554/image-w1280.jpg",
+                            "director_id": 153,
+                            "director_name": "Andreas Prochaska",
+                            "director_url": "http://mubi.com/cast/andreas-prochaska"
+                        },
+                        {
+                            "movie_id": 18,
+                            "movie_title": "The Wind of the Night",
+                            "movie_release_year": 1999,
+                            "movie_url": "http://mubi.com/films/the-wind-of-the-night",
+                            "movie_title_language": "en",
+                            "movie_popularity": 88,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/18/cache-49914-1498804987/image-w1280.jpg",
+                            "director_id": 145,
+                            "director_name": "Philippe Garrel",
+                            "director_url": "http://mubi.com/cast/philippe-garrel"
+                        },
+                        {
+                            "movie_id": 20,
+                            "movie_title": "Chicken Heart",
+                            "movie_release_year": 2002,
+                            "movie_url": "http://mubi.com/films/chicken-heart",
+                            "movie_title_language": "en",
+                            "movie_popularity": 15,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/20/cache-7940-1481117234/image-w1280.jpg",
+                            "director_id": 595895,
+                            "director_name": "Hiroshi Shimizu",
+                            "director_url": "http://mubi.com/cast/hiroshi-shimizu-4"
+                        },
+                        {
+                            "movie_id": 21,
+                            "movie_title": "After Life",
+                            "movie_release_year": 1998,
+                            "movie_url": "http://mubi.com/films/after-life",
+                            "movie_title_language": "en",
+                            "movie_popularity": 649,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/21/cache-43152-1546462810/image-w1280.jpg",
+                            "director_id": 178,
+                            "director_name": "Hirokazu Kore-eda",
+                            "director_url": "http://mubi.com/cast/hirokazu-kore-eda"
+                        },
+                        {
+                            "movie_id": 22,
+                            "movie_title": "17 rue Bleue",
+                            "movie_release_year": 2001,
+                            "movie_url": "http://mubi.com/films/17-rue-bleue",
+                            "movie_title_language": "en",
+                            "movie_popularity": 6,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/22/cache-7941-1481117239/image-w1280.jpg",
+                            "director_id": 186,
+                            "director_name": "Chad Chenouga",
+                            "director_url": "http://mubi.com/cast/chad-chenouga"
+                        },
+                        {
+                            "movie_id": 23,
+                            "movie_title": "Agua",
+                            "movie_release_year": 2006,
+                            "movie_url": "http://mubi.com/films/agua",
+                            "movie_title_language": "en",
+                            "movie_popularity": 3,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/23/cache-7942-1481117275/image-w1280.jpg",
+                            "director_id": 194,
+                            "director_name": "Verónica Chen",
+                            "director_url": "http://mubi.com/cast/veronica-chen"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "user_id": "2",
+            "sections": [
+                {
+                    "title": "section n4",
+                    "type": "PosterCard",
+                    "data": [
+                        {
+                            "movie_id": 9,
+                            "movie_title": "Young Yakuza",
+                            "movie_release_year": 2007,
+                            "movie_url": "http://mubi.com/films/young-yakuza",
+                            "movie_title_language": "en",
+                            "movie_popularity": 17,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/9/cache-7934-1581390744/image-w1280.jpg",
+                            "director_id": 127,
+                            "director_name": "Jean-Pierre Limosin",
+                            "director_url": "http://mubi.com/cast/jean-pierre-limosin"
+                        },
+                        {
+                            "movie_id": 10,
+                            "movie_title": "The Return",
+                            "movie_release_year": 2003,
+                            "movie_url": "http://mubi.com/films/the-return",
+                            "movie_title_language": "en",
+                            "movie_popularity": 1236,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/10/cache-7935-1577347218/image-w1280.jpg",
+                            "director_id": 27,
+                            "director_name": "Andrey Zvyagintsev",
+                            "director_url": "http://mubi.com/cast/andrey-zvyagintsev"
+                        },
+                        {
+                            "movie_id": 11,
+                            "movie_title": "Il grido",
+                            "movie_release_year": 1957,
+                            "movie_url": "http://mubi.com/films/il-grido",
+                            "movie_title_language": "en",
+                            "movie_popularity": 178,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/11/cache-35194-1527231603/image-w1280.jpg",
+                            "director_id": 36,
+                            "director_name": "Michelangelo Antonioni",
+                            "director_url": "http://mubi.com/cast/michelangelo-antonioni"
+                        },
+                        {
+                            "movie_id": 12,
+                            "movie_title": "The General",
+                            "movie_release_year": 1926,
+                            "movie_url": "http://mubi.com/films/the-general",
+                            "movie_title_language": "en",
+                            "movie_popularity": 3124,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/12/cache-47268-1553090423/image-w1280.jpg",
+                            "director_id": "46, 47",
+                            "director_name": "Buster Keaton, Clyde Bruckman",
+                            "director_url": "http://mubi.com/cast/buster-keaton, http://mubi.com/cast/clyde-bruckman"
+                        },
+                        {
+                            "movie_id": 13,
+                            "movie_title": "L'Age d'Or",
+                            "movie_release_year": 1930,
+                            "movie_url": "http://mubi.com/films/lage-dor",
+                            "movie_title_language": "en",
+                            "movie_popularity": 898,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/13/cache-7936-1552914935/image-w1280.jpg",
+                            "director_id": 56,
+                            "director_name": "Luis Buñuel",
+                            "director_url": "http://mubi.com/cast/luis-bunuel"
+                        },
+                        {
+                            "movie_id": 14,
+                            "movie_title": "Les bonnes femmes",
+                            "movie_release_year": 1960,
+                            "movie_url": "http://mubi.com/films/the-good-time-girls",
+                            "movie_title_language": "en",
+                            "movie_popularity": 167,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/14/cache-37942-1556629152/image-w1280.jpg",
+                            "director_id": 62,
+                            "director_name": "Claude Chabrol",
+                            "director_url": "http://mubi.com/cast/claude-chabrol"
+                        }
+                    ]
+                },
+                {
+                    "title": "section n5",
+                    "type": "VideoCard",
+                    "data": [
+                        {
+                            "movie_id": 1,
+                            "movie_title": "La Antena",
+                            "movie_release_year": 2007,
+                            "movie_url": "http://mubi.com/films/la-antena",
+                            "movie_title_language": "en",
+                            "movie_popularity": 105,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/1/cache-7927-1581389497/image-w1280.jpg",
+                            "director_id": 131,
+                            "director_name": "Esteban Sapir",
+                            "director_url": "http://mubi.com/cast/esteban-sapir"
+                        },
+                        {
+                            "movie_id": 2,
+                            "movie_title": "Elementary Particles",
+                            "movie_release_year": 2006,
+                            "movie_url": "http://mubi.com/films/elementary-particles",
+                            "movie_title_language": "en",
+                            "movie_popularity": 23,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/2/cache-512179-1581389841/image-w1280.jpg",
+                            "director_id": 73,
+                            "director_name": "Oskar Roehler",
+                            "director_url": "http://mubi.com/cast/oskar-roehler"
+                        },
+                        {
+                            "movie_id": 3,
+                            "movie_title": "It's Winter",
+                            "movie_release_year": 2006,
+                            "movie_url": "http://mubi.com/films/its-winter",
+                            "movie_title_language": "en",
+                            "movie_popularity": 21,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/3/cache-7929-1481539519/image-w1280.jpg",
+                            "director_id": 82,
+                            "director_name": "Rafi Pitts",
+                            "director_url": "http://mubi.com/cast/rafi-pitts"
+                        },
+                        {
+                            "movie_id": 4,
+                            "movie_title": "Kirikou and the Wild Beasts",
+                            "movie_release_year": 2005,
+                            "movie_url": "http://mubi.com/films/kirikou-and-the-wild-beasts",
+                            "movie_title_language": "en",
+                            "movie_popularity": 46,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/4/cache-7930-1568880017/image-w1280.jpg",
+                            "director_id": "89, 90",
+                            "director_name": "Michel Ocelot, Bénédicte Galup",
+                            "director_url": "http://mubi.com/cast/michel-ocelot, http://mubi.com/cast/benedicte-galup"
+                        },
+                        {
+                            "movie_id": 5,
+                            "movie_title": "Padre Nuestro",
+                            "movie_release_year": 2007,
+                            "movie_url": "http://mubi.com/films/padre-nuestro",
+                            "movie_title_language": "en",
+                            "movie_popularity": 7,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/5/cache-7931-1581390636/image-w1280.jpg",
+                            "director_id": 92,
+                            "director_name": "Christopher Zalla",
+                            "director_url": "http://mubi.com/cast/christopher-zalla"
+                        },
+                        {
+                            "movie_id": 6,
+                            "movie_title": "The Perfume of the Lady in Black",
+                            "movie_release_year": 2005,
+                            "movie_url": "http://mubi.com/films/the-perfume-of-the-lady-in-black",
+                            "movie_title_language": "en",
+                            "movie_popularity": 6,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/6/cache-7932-1481539523/image-w1280.jpg",
+                            "director_id": 102,
+                            "director_name": "Bruno Podalydès",
+                            "director_url": "http://mubi.com/cast/bruno-podalydes"
+                        },
+                        {
+                            "movie_id": 7,
+                            "movie_title": "Riviera",
+                            "movie_release_year": 2005,
+                            "movie_url": "http://mubi.com/films/riviera",
+                            "movie_title_language": "en",
+                            "movie_popularity": 5,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/7/cache-47389-1476185879/image-w1280.jpg",
+                            "director_id": 109,
+                            "director_name": "Anne Villacèque",
+                            "director_url": "http://mubi.com/cast/anne-villaceque"
+                        },
+                        {
+                            "movie_id": 8,
+                            "movie_title": "Someone Else's Happiness",
+                            "movie_release_year": 2005,
+                            "movie_url": "http://mubi.com/films/someone-elses-happiness",
+                            "movie_title_language": "en",
+                            "movie_popularity": 8,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/8/cache-113933-1476185868/image-w1280.jpg",
+                            "director_id": 118,
+                            "director_name": "Fien Troch",
+                            "director_url": "http://mubi.com/cast/fien-troch"
+                        }
+                    ]
+                },
+                {
+                    "title": "section n6",
+                    "type": "PosterCard",
+                    "data": [
+                        {
+                            "movie_id": 15,
+                            "movie_title": "Cops",
+                            "movie_release_year": 1922,
+                            "movie_url": "http://mubi.com/films/cops",
+                            "movie_title_language": "en",
+                            "movie_popularity": 237,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/15/cache-91101-1481539543/image-w1280.jpg",
+                            "director_id": "46, 23290",
+                            "director_name": "Buster Keaton, Edward F. Cline",
+                            "director_url": "http://mubi.com/cast/buster-keaton, http://mubi.com/cast/edward-f-cline"
+                        },
+                        {
+                            "movie_id": 16,
+                            "movie_title": "Tokyo Eyes",
+                            "movie_release_year": 1998,
+                            "movie_url": "http://mubi.com/films/tokyo-eyes",
+                            "movie_title_language": "en",
+                            "movie_popularity": 23,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/16/cache-91605-1476185899/image-w1280.jpg",
+                            "director_id": 127,
+                            "director_name": "Jean-Pierre Limosin",
+                            "director_url": "http://mubi.com/cast/jean-pierre-limosin"
+                        },
+                        {
+                            "movie_id": 17,
+                            "movie_title": "Dead in 3 Days",
+                            "movie_release_year": 2006,
+                            "movie_url": "http://mubi.com/films/dead-in-3-days",
+                            "movie_title_language": "en",
+                            "movie_popularity": 12,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/17/cache-7939-1481539554/image-w1280.jpg",
+                            "director_id": 153,
+                            "director_name": "Andreas Prochaska",
+                            "director_url": "http://mubi.com/cast/andreas-prochaska"
+                        },
+                        {
+                            "movie_id": 18,
+                            "movie_title": "The Wind of the Night",
+                            "movie_release_year": 1999,
+                            "movie_url": "http://mubi.com/films/the-wind-of-the-night",
+                            "movie_title_language": "en",
+                            "movie_popularity": 88,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/18/cache-49914-1498804987/image-w1280.jpg",
+                            "director_id": 145,
+                            "director_name": "Philippe Garrel",
+                            "director_url": "http://mubi.com/cast/philippe-garrel"
+                        },
+                        {
+                            "movie_id": 20,
+                            "movie_title": "Chicken Heart",
+                            "movie_release_year": 2002,
+                            "movie_url": "http://mubi.com/films/chicken-heart",
+                            "movie_title_language": "en",
+                            "movie_popularity": 15,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/20/cache-7940-1481117234/image-w1280.jpg",
+                            "director_id": 595895,
+                            "director_name": "Hiroshi Shimizu",
+                            "director_url": "http://mubi.com/cast/hiroshi-shimizu-4"
+                        },
+                        {
+                            "movie_id": 21,
+                            "movie_title": "After Life",
+                            "movie_release_year": 1998,
+                            "movie_url": "http://mubi.com/films/after-life",
+                            "movie_title_language": "en",
+                            "movie_popularity": 649,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/21/cache-43152-1546462810/image-w1280.jpg",
+                            "director_id": 178,
+                            "director_name": "Hirokazu Kore-eda",
+                            "director_url": "http://mubi.com/cast/hirokazu-kore-eda"
+                        },
+                        {
+                            "movie_id": 22,
+                            "movie_title": "17 rue Bleue",
+                            "movie_release_year": 2001,
+                            "movie_url": "http://mubi.com/films/17-rue-bleue",
+                            "movie_title_language": "en",
+                            "movie_popularity": 6,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/22/cache-7941-1481117239/image-w1280.jpg",
+                            "director_id": 186,
+                            "director_name": "Chad Chenouga",
+                            "director_url": "http://mubi.com/cast/chad-chenouga"
+                        },
+                        {
+                            "movie_id": 23,
+                            "movie_title": "Agua",
+                            "movie_release_year": 2006,
+                            "movie_url": "http://mubi.com/films/agua",
+                            "movie_title_language": "en",
+                            "movie_popularity": 3,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/23/cache-7942-1481117275/image-w1280.jpg",
+                            "director_id": 194,
+                            "director_name": "Verónica Chen",
+                            "director_url": "http://mubi.com/cast/veronica-chen"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "user_id": "3",
+            "sections": [
+                {
+                    "title": "section n7",
+                    "type": "PosterCard",
+                    "data": [
+                        {
+                            "movie_id": 9,
+                            "movie_title": "Young Yakuza",
+                            "movie_release_year": 2007,
+                            "movie_url": "http://mubi.com/films/young-yakuza",
+                            "movie_title_language": "en",
+                            "movie_popularity": 17,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/9/cache-7934-1581390744/image-w1280.jpg",
+                            "director_id": 127,
+                            "director_name": "Jean-Pierre Limosin",
+                            "director_url": "http://mubi.com/cast/jean-pierre-limosin"
+                        },
+                        {
+                            "movie_id": 10,
+                            "movie_title": "The Return",
+                            "movie_release_year": 2003,
+                            "movie_url": "http://mubi.com/films/the-return",
+                            "movie_title_language": "en",
+                            "movie_popularity": 1236,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/10/cache-7935-1577347218/image-w1280.jpg",
+                            "director_id": 27,
+                            "director_name": "Andrey Zvyagintsev",
+                            "director_url": "http://mubi.com/cast/andrey-zvyagintsev"
+                        },
+                        {
+                            "movie_id": 11,
+                            "movie_title": "Il grido",
+                            "movie_release_year": 1957,
+                            "movie_url": "http://mubi.com/films/il-grido",
+                            "movie_title_language": "en",
+                            "movie_popularity": 178,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/11/cache-35194-1527231603/image-w1280.jpg",
+                            "director_id": 36,
+                            "director_name": "Michelangelo Antonioni",
+                            "director_url": "http://mubi.com/cast/michelangelo-antonioni"
+                        },
+                        {
+                            "movie_id": 12,
+                            "movie_title": "The General",
+                            "movie_release_year": 1926,
+                            "movie_url": "http://mubi.com/films/the-general",
+                            "movie_title_language": "en",
+                            "movie_popularity": 3124,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/12/cache-47268-1553090423/image-w1280.jpg",
+                            "director_id": "46, 47",
+                            "director_name": "Buster Keaton, Clyde Bruckman",
+                            "director_url": "http://mubi.com/cast/buster-keaton, http://mubi.com/cast/clyde-bruckman"
+                        },
+                        {
+                            "movie_id": 13,
+                            "movie_title": "L'Age d'Or",
+                            "movie_release_year": 1930,
+                            "movie_url": "http://mubi.com/films/lage-dor",
+                            "movie_title_language": "en",
+                            "movie_popularity": 898,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/13/cache-7936-1552914935/image-w1280.jpg",
+                            "director_id": 56,
+                            "director_name": "Luis Buñuel",
+                            "director_url": "http://mubi.com/cast/luis-bunuel"
+                        },
+                        {
+                            "movie_id": 14,
+                            "movie_title": "Les bonnes femmes",
+                            "movie_release_year": 1960,
+                            "movie_url": "http://mubi.com/films/the-good-time-girls",
+                            "movie_title_language": "en",
+                            "movie_popularity": 167,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/14/cache-37942-1556629152/image-w1280.jpg",
+                            "director_id": 62,
+                            "director_name": "Claude Chabrol",
+                            "director_url": "http://mubi.com/cast/claude-chabrol"
+                        }
+                    ]
+                },
+                {
+                    "title": "section n8",
+                    "type": "VideoCard",
+                    "data": [
+                        {
+                            "movie_id": 1,
+                            "movie_title": "La Antena",
+                            "movie_release_year": 2007,
+                            "movie_url": "http://mubi.com/films/la-antena",
+                            "movie_title_language": "en",
+                            "movie_popularity": 105,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/1/cache-7927-1581389497/image-w1280.jpg",
+                            "director_id": 131,
+                            "director_name": "Esteban Sapir",
+                            "director_url": "http://mubi.com/cast/esteban-sapir"
+                        },
+                        {
+                            "movie_id": 2,
+                            "movie_title": "Elementary Particles",
+                            "movie_release_year": 2006,
+                            "movie_url": "http://mubi.com/films/elementary-particles",
+                            "movie_title_language": "en",
+                            "movie_popularity": 23,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/2/cache-512179-1581389841/image-w1280.jpg",
+                            "director_id": 73,
+                            "director_name": "Oskar Roehler",
+                            "director_url": "http://mubi.com/cast/oskar-roehler"
+                        },
+                        {
+                            "movie_id": 3,
+                            "movie_title": "It's Winter",
+                            "movie_release_year": 2006,
+                            "movie_url": "http://mubi.com/films/its-winter",
+                            "movie_title_language": "en",
+                            "movie_popularity": 21,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/3/cache-7929-1481539519/image-w1280.jpg",
+                            "director_id": 82,
+                            "director_name": "Rafi Pitts",
+                            "director_url": "http://mubi.com/cast/rafi-pitts"
+                        },
+                        {
+                            "movie_id": 4,
+                            "movie_title": "Kirikou and the Wild Beasts",
+                            "movie_release_year": 2005,
+                            "movie_url": "http://mubi.com/films/kirikou-and-the-wild-beasts",
+                            "movie_title_language": "en",
+                            "movie_popularity": 46,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/4/cache-7930-1568880017/image-w1280.jpg",
+                            "director_id": "89, 90",
+                            "director_name": "Michel Ocelot, Bénédicte Galup",
+                            "director_url": "http://mubi.com/cast/michel-ocelot, http://mubi.com/cast/benedicte-galup"
+                        },
+                        {
+                            "movie_id": 5,
+                            "movie_title": "Padre Nuestro",
+                            "movie_release_year": 2007,
+                            "movie_url": "http://mubi.com/films/padre-nuestro",
+                            "movie_title_language": "en",
+                            "movie_popularity": 7,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/5/cache-7931-1581390636/image-w1280.jpg",
+                            "director_id": 92,
+                            "director_name": "Christopher Zalla",
+                            "director_url": "http://mubi.com/cast/christopher-zalla"
+                        },
+                        {
+                            "movie_id": 6,
+                            "movie_title": "The Perfume of the Lady in Black",
+                            "movie_release_year": 2005,
+                            "movie_url": "http://mubi.com/films/the-perfume-of-the-lady-in-black",
+                            "movie_title_language": "en",
+                            "movie_popularity": 6,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/6/cache-7932-1481539523/image-w1280.jpg",
+                            "director_id": 102,
+                            "director_name": "Bruno Podalydès",
+                            "director_url": "http://mubi.com/cast/bruno-podalydes"
+                        },
+                        {
+                            "movie_id": 7,
+                            "movie_title": "Riviera",
+                            "movie_release_year": 2005,
+                            "movie_url": "http://mubi.com/films/riviera",
+                            "movie_title_language": "en",
+                            "movie_popularity": 5,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/7/cache-47389-1476185879/image-w1280.jpg",
+                            "director_id": 109,
+                            "director_name": "Anne Villacèque",
+                            "director_url": "http://mubi.com/cast/anne-villaceque"
+                        },
+                        {
+                            "movie_id": 8,
+                            "movie_title": "Someone Else's Happiness",
+                            "movie_release_year": 2005,
+                            "movie_url": "http://mubi.com/films/someone-elses-happiness",
+                            "movie_title_language": "en",
+                            "movie_popularity": 8,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/8/cache-113933-1476185868/image-w1280.jpg",
+                            "director_id": 118,
+                            "director_name": "Fien Troch",
+                            "director_url": "http://mubi.com/cast/fien-troch"
+                        }
+                    ]
+                },
+                {
+                    "title": "section n9",
+                    "type": "PosterCard",
+                    "data": [
+                        {
+                            "movie_id": 15,
+                            "movie_title": "Cops",
+                            "movie_release_year": 1922,
+                            "movie_url": "http://mubi.com/films/cops",
+                            "movie_title_language": "en",
+                            "movie_popularity": 237,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/15/cache-91101-1481539543/image-w1280.jpg",
+                            "director_id": "46, 23290",
+                            "director_name": "Buster Keaton, Edward F. Cline",
+                            "director_url": "http://mubi.com/cast/buster-keaton, http://mubi.com/cast/edward-f-cline"
+                        },
+                        {
+                            "movie_id": 16,
+                            "movie_title": "Tokyo Eyes",
+                            "movie_release_year": 1998,
+                            "movie_url": "http://mubi.com/films/tokyo-eyes",
+                            "movie_title_language": "en",
+                            "movie_popularity": 23,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/16/cache-91605-1476185899/image-w1280.jpg",
+                            "director_id": 127,
+                            "director_name": "Jean-Pierre Limosin",
+                            "director_url": "http://mubi.com/cast/jean-pierre-limosin"
+                        },
+                        {
+                            "movie_id": 17,
+                            "movie_title": "Dead in 3 Days",
+                            "movie_release_year": 2006,
+                            "movie_url": "http://mubi.com/films/dead-in-3-days",
+                            "movie_title_language": "en",
+                            "movie_popularity": 12,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/17/cache-7939-1481539554/image-w1280.jpg",
+                            "director_id": 153,
+                            "director_name": "Andreas Prochaska",
+                            "director_url": "http://mubi.com/cast/andreas-prochaska"
+                        },
+                        {
+                            "movie_id": 18,
+                            "movie_title": "The Wind of the Night",
+                            "movie_release_year": 1999,
+                            "movie_url": "http://mubi.com/films/the-wind-of-the-night",
+                            "movie_title_language": "en",
+                            "movie_popularity": 88,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/18/cache-49914-1498804987/image-w1280.jpg",
+                            "director_id": 145,
+                            "director_name": "Philippe Garrel",
+                            "director_url": "http://mubi.com/cast/philippe-garrel"
+                        },
+                        {
+                            "movie_id": 20,
+                            "movie_title": "Chicken Heart",
+                            "movie_release_year": 2002,
+                            "movie_url": "http://mubi.com/films/chicken-heart",
+                            "movie_title_language": "en",
+                            "movie_popularity": 15,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/20/cache-7940-1481117234/image-w1280.jpg",
+                            "director_id": 595895,
+                            "director_name": "Hiroshi Shimizu",
+                            "director_url": "http://mubi.com/cast/hiroshi-shimizu-4"
+                        },
+                        {
+                            "movie_id": 21,
+                            "movie_title": "After Life",
+                            "movie_release_year": 1998,
+                            "movie_url": "http://mubi.com/films/after-life",
+                            "movie_title_language": "en",
+                            "movie_popularity": 649,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/21/cache-43152-1546462810/image-w1280.jpg",
+                            "director_id": 178,
+                            "director_name": "Hirokazu Kore-eda",
+                            "director_url": "http://mubi.com/cast/hirokazu-kore-eda"
+                        },
+                        {
+                            "movie_id": 22,
+                            "movie_title": "17 rue Bleue",
+                            "movie_release_year": 2001,
+                            "movie_url": "http://mubi.com/films/17-rue-bleue",
+                            "movie_title_language": "en",
+                            "movie_popularity": 6,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/22/cache-7941-1481117239/image-w1280.jpg",
+                            "director_id": 186,
+                            "director_name": "Chad Chenouga",
+                            "director_url": "http://mubi.com/cast/chad-chenouga"
+                        },
+                        {
+                            "movie_id": 23,
+                            "movie_title": "Agua",
+                            "movie_release_year": 2006,
+                            "movie_url": "http://mubi.com/films/agua",
+                            "movie_title_language": "en",
+                            "movie_popularity": 3,
+                            "movie_image_url": "https://images.mubicdn.net/images/film/23/cache-7942-1481117275/image-w1280.jpg",
+                            "director_id": 194,
+                            "director_name": "Verónica Chen",
+                            "director_url": "http://mubi.com/cast/veronica-chen"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -17,7 +17,7 @@ const lorem = new LoremIpsum({
     },
 });
 
-const MOVIE_DATA = JSON.parse(fs.readFileSync("./src/data/movie_data.json"))[
+/* const MOVIE_DATA = JSON.parse(fs.readFileSync("./src/data/movie_data.json"))[
     "data"
 ];
 
@@ -30,7 +30,7 @@ function getRandomInt(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-
+ */
 //const csvToJson = require("convert-csv-to-json");
 
 // const moviesData = csvToJson
@@ -74,31 +74,41 @@ function getRandomInt(min, max) {
 //     }
 // });
 
+var db = require("./database.js")
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
 
 app.get("/getMovieData/byId", (req, res) => {
-    const id = req.query.id;
-    const movie = MOVIE_DATA.find((p) => p.movie_id == id);
-    if (movie) {
-        res.json(movie);
-    } else {
-        res.status(404).send("Movie not found");
-    }
+    const params = [req.query.id];
+    const sql = "select * from movies where movie_id = ?"
+    db.get(sql, params, (err, row) => {
+        if(err) {
+            res.status(400).json({"error": err.message})
+            return;
+        }
+        res.json({
+            "message": "success",
+            "data": row
+        })
+    })
+    
 });
 
 app.get("/search/byTitle", (req, res) => {
-    const title = req.query.title;
-    const movies = MOVIE_DATA.filter((p) =>
-        p.movie_title.toLowerCase().includes(title.toLowerCase())
-    );
-    movies.sort((a, b) => b.movie_popularity.localeCompare(a.movie_popularity));
-    if (movies) {
-        res.json(movies);
-    } else {
-        res.status(404).send("Movies not found");
-    }
+    const params = [req.query.title];
+    const sql = "select * from movies where movie_title like ? order by movie_popularity desc"
+    db.all(sql, params, (err, rows) => {
+        if(err) {
+            res.status(400).json({"error": err.message})
+            return;
+        }
+        res.json({
+            "message": "success",
+            "data": rows
+        })
+    })
 });
 
 app.get("/homepage/byUserId", (req, res) => {

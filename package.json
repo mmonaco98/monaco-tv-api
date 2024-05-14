@@ -2,7 +2,9 @@
     "dependencies": {
         "convert-csv-to-json": "^2.46.0",
         "express": "^4.19.2",
-        "lorem-ipsum": "^2.0.8"
+        "lorem-ipsum": "^2.0.8",
+        "md5": "^2.3.0",
+        "sqlite3": "^5.1.7"
     },
     "scripts": {
         "start": "node app.js"

@@ -1,80 +1,12 @@
 const express = require("express");
-const fs = require("fs");
-
+const [
+    generateSentences,
+    generateWords,
+] = require("./src/helpers/loremIpsum.js");
+const getRandomInt = require("./src/helpers/random.js");
+const db = require("./src/helpers/database.js");
 const app = express();
 const port = 8000;
-
-const LoremIpsum = require("lorem-ipsum").LoremIpsum;
-
-const lorem = new LoremIpsum({
-    sentencesPerParagraph: {
-        max: 8,
-        min: 4,
-    },
-    wordsPerSentence: {
-        max: 16,
-        min: 4,
-    },
-});
-
-/* const MOVIE_DATA = JSON.parse(fs.readFileSync("./src/data/movie_data.json"))[
-    "data"
-];
-
-const HOMEPAGE_DATA = JSON.parse(fs.readFileSync("./src/data/homepage.json"))[
-    "getHomepages"
-];
-
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
- */
-//const csvToJson = require("convert-csv-to-json");
-
-// const moviesData = csvToJson
-//     .fieldDelimiter(",")
-//     .getJsonFromCsv("src/data/mubi_movie_data.csv");
-
-//
-
-// MOVIE_DATA.forEach((element) => {
-//     element.movie_description = lorem.generateSentences(getRandomInt(3, 6));
-// });
-
-// const x = { data: MOVIE_DATA };
-
-// fs.writeFile("./src/data/movie_data.json", JSON.stringify(x), function (err) {
-//     if (err) {
-//         console.log(err);
-//     }
-// });
-
-// HOMEPAGE_DATA.forEach((homepage) => {
-//     homepage.sections = [];
-//     for (let y = 0; y < 20; y++) {
-//         homepage.sections[y] = {
-//             title: lorem.generateWords(getRandomInt(2, 5)),
-//             type: ["PosterCard", "VideoCard"][getRandomInt(0, 1)],
-//             data: [],
-//         };
-
-//         for (let x = 0; x < getRandomInt(6, 12); x++) {
-//             homepage.sections[y].data.push(MOVIE_DATA[getRandomInt(0, 260000)]);
-//         }
-//     }
-// });
-
-// const y = { getHomepages: HOMEPAGE_DATA };
-
-// fs.writeFile("./src/data/homepage.json", JSON.stringify(y), function (err) {
-//     if (err) {
-//         console.log(err);
-//     }
-// });
-
-var db = require("./database.js")
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
@@ -82,41 +14,113 @@ app.listen(port, () => {
 
 app.get("/getMovieData/byId", (req, res) => {
     const params = [req.query.id];
-    const sql = "select * from movies where movie_id = ?"
+    const sql = "select * from movies where movie_id = ?";
     db.get(sql, params, (err, row) => {
-        if(err) {
-            res.status(400).json({"error": err.message})
+        if (err) {
+            res.status(400).json({ error: err.message });
             return;
         }
         res.json({
-            "message": "success",
-            "data": row
-        })
-    })
-    
+            message: "success",
+            data: row,
+        });
+    });
 });
 
 app.get("/search/byTitle", (req, res) => {
     const params = [req.query.title];
-    const sql = "select * from movies where movie_title like ? order by movie_popularity desc"
+    const sql =
+        "select * from movies where movie_title like ? order by movie_popularity desc";
     db.all(sql, params, (err, rows) => {
-        if(err) {
-            res.status(400).json({"error": err.message})
+        if (err) {
+            res.status(400).json({ error: err.message });
             return;
         }
         res.json({
-            "message": "success",
-            "data": rows
-        })
-    })
+            message: "success",
+            data: rows,
+        });
+    });
 });
 
 app.get("/homepage/byUserId", (req, res) => {
-    const userId = req.query.userId;
-    const homepage = HOMEPAGE_DATA.find((p) => p.user_id == userId);
-    if (homepage) {
-        res.json(homepage);
-    } else {
-        res.status(404).send("Movies not found");
+    const params = [req.query.userId];
+    const sql = "select * from homepage where user_id = ?";
+    db.all(sql, params, (err, rows) => {
+        if (err) {
+            res.status(400).json({ error: err.message });
+            return;
+        }
+        res.json({
+            message: "success",
+            data: rows,
+        });
+    });
+});
+
+app.get("/addDescription", (req, res) => {
+    let ids;
+    db.all(
+        "select movie_id from movies where movie_id > 102000",
+        (err, rows) => {
+            ids = rows;
+            ids.forEach((element) => {
+                const value = generateSentences(getRandomInt(4, 7));
+                const sql =
+                    "update movies set movie_description = ? where movie_id = ?";
+                const params = [value, element.movie_id];
+
+                db.run(sql, params, (err) => {
+                    if (err) {
+                        console.log("ERROR: ", params);
+                        res.status(400).json({ error: err.message });
+                        return;
+                    }
+                    /* res.json({
+                            message: "success",
+                        }); */
+                });
+            });
+        }
+    );
+
+    res.json({ message: "DONE" });
+});
+
+let movies;
+db.all("select * from movies order by random()", (err, rows) => {
+    movies = rows;
+});
+
+app.get("/createHomepage", (req, res) => {
+    //const user_id = req.query.id;
+    //const section_id = req.query.section;
+    for (let i = 1; i <= 5; i++) {
+        for (let j = 1; j <= 30; j++) {
+            const nFilmInSection = getRandomInt(7, 15);
+            const sectionTitle = generateWords(3, 5);
+            for (let k = 0; k < nFilmInSection; k++) {
+                const seed = getRandomInt(1, 200000);
+                const row = movies[seed + k];
+                const params = [
+                    i,
+                    sectionTitle,
+                    j,
+                    row.movie_id,
+                    row.movie_title,
+                    row.movie_release_year,
+                    row.movie_image_url,
+                    row.director_name,
+                    row.movie_description,
+                ];
+                db.run(
+                    "insert into homepage values (?,?,?,?,?,?,?,?,?)",
+                    params,
+                    (err) => {}
+                );
+            }
+        }
     }
+
+    res.json({ message: "DONE" });
 });

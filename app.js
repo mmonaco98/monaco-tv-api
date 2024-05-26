@@ -1,9 +1,4 @@
 const express = require("express");
-const [
-    generateSentences,
-    generateWords,
-] = require("./src/helpers/loremIpsum.js");
-const getRandomInt = require("./src/helpers/random.js");
 const db = require("./src/helpers/database.js");
 const app = express();
 const port = 8000;
@@ -51,14 +46,35 @@ app.get("/homepage/byUserId", (req, res) => {
             res.status(400).json({ error: err.message });
             return;
         }
+        const sections = [];
+        for (let x = 1; x < 30; x++) {
+            const moviesInSection = rows.filter(
+                (movie) => movie.section_id == x
+            );
+            const section = {
+                sectionTitle: moviesInSection.at(0).section_title,
+                movies: [],
+                type: "VideoCard",
+            };
+            moviesInSection.forEach((elem) => {
+                section.movies.push({
+                    movie_title: elem.movie_title,
+                    movie_description: elem.movie_description,
+                    movie_image_url: elem.movie_image_url,
+                    movie_release_year: elem.movie_release_year,
+                    director_name: elem.director_name,
+                });
+            });
+            sections.push(section);
+        }
         res.json({
             message: "success",
-            data: rows,
+            data: sections,
         });
     });
 });
 
-app.get("/addDescription", (req, res) => {
+/* app.get("/addDescription", (req, res) => {
     let ids;
     db.all(
         "select movie_id from movies where movie_id > 102000",
@@ -76,23 +92,20 @@ app.get("/addDescription", (req, res) => {
                         res.status(400).json({ error: err.message });
                         return;
                     }
-                    /* res.json({
-                            message: "success",
-                        }); */
                 });
             });
         }
     );
 
     res.json({ message: "DONE" });
-});
+}); */
 
-let movies;
+/* let movies;
 db.all("select * from movies order by random()", (err, rows) => {
     movies = rows;
-});
+}); */
 
-app.get("/createHomepage", (req, res) => {
+/* app.get("/createHomepage", (req, res) => {
     //const user_id = req.query.id;
     //const section_id = req.query.section;
     for (let i = 1; i <= 5; i++) {
@@ -123,4 +136,4 @@ app.get("/createHomepage", (req, res) => {
     }
 
     res.json({ message: "DONE" });
-});
+}); */

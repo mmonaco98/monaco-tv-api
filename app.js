@@ -1,13 +1,19 @@
 const express = require("express");
 const db = require("./src/helpers/database.js");
+const getRandomInt = require('./src/helpers/random.js')
+const [generateWords] = require('./src/helpers/loremIpsum.js')
 const app = express();
 const port = 8000;
+
+app.use(express.json());
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
 
-app.get("/getMovieData/byId", (req, res) => {
+// MOVIES
+
+app.get("/movie/byId", (req, res) => {
     const params = [req.query.id];
     const sql = "select * from movies where movie_id = ?";
     db.get(sql, params, (err, row) => {
@@ -36,6 +42,47 @@ app.get("/search/byTitle", (req, res) => {
             data: rows,
         });
     });
+});
+
+//HOMEPAGE
+
+app.post("/homepage/create", (req, res) => {
+    const user_id = req.query.id;
+    let movies;
+    db.all("select * from movies order by random()", (err, rows) => {
+        movies = rows;
+        for (let j = 1; j <= 30; j++) {
+            const nFilmInSection = getRandomInt(7, 15);
+            const sectionTitle = generateWords(3, 5);
+            for (let k = 0; k < nFilmInSection; k++) {
+                const seed = getRandomInt(1, 200000);
+                const row = movies[seed + k];
+                if (row) {
+                    const params = [
+                        user_id,
+                        sectionTitle,
+                        j,
+                        row.movie_id,
+                        row.movie_title,
+                        row.movie_release_year,
+                        row.movie_image_url,
+                        row.director_name,
+                        row.movie_description,
+                    ];
+                    db.run(
+                        "insert into homepage values (?,?,?,?,?,?,?,?,?)",
+                        params,
+                        (err) => { }
+                    );
+                }
+                
+            }
+        }
+    });
+    
+
+
+    res.json({ message: "DONE" });
 });
 
 app.get("/homepage/byUserId", (req, res) => {
@@ -74,6 +121,50 @@ app.get("/homepage/byUserId", (req, res) => {
     });
 });
 
+//USER
+
+app.get("/user/byId", (req, res) => {
+    const params = [req.query.id];
+    const sql = "select * from users where id = ?";
+    db.get(sql, params, (err, row) => {
+        if (err) {
+            res.status(400).json({ error: err.message });
+            return;
+        }
+        if (row == undefined) {
+            res.status(400).json({ error: 'User does not exist.' });
+            return;
+        }
+        res.json({
+            message: "success",
+            data: row,
+        });
+    });
+});
+
+app.post("/user/insert", (req, res) => {
+    const user = req.body;
+    const params = [user.name, user.mail, user.age, user.avatar, user.gender, user.password];
+    const sql = `insert into users values (NULL,?,?,?,?,?,?)`;
+
+    db.run(sql, params, (err) => {
+        if (err) {
+            res.status(400).json({ error: err.message });
+            return;
+        }
+        db.get("select * from users where mail = ? and password = ?", [user.mail, user.password], (err, row) => {
+            if (err) {
+                res.status(400).json({ error: err.message });
+                return;
+            }
+            res.json({
+                message: "success",
+                data: row,
+            });
+        })
+    });
+
+});
 /* app.get("/addDescription", (req, res) => {
     let ids;
     db.all(
@@ -100,40 +191,4 @@ app.get("/homepage/byUserId", (req, res) => {
     res.json({ message: "DONE" });
 }); */
 
-/* let movies;
-db.all("select * from movies order by random()", (err, rows) => {
-    movies = rows;
-}); */
 
-/* app.get("/createHomepage", (req, res) => {
-    //const user_id = req.query.id;
-    //const section_id = req.query.section;
-    for (let i = 1; i <= 5; i++) {
-        for (let j = 1; j <= 30; j++) {
-            const nFilmInSection = getRandomInt(7, 15);
-            const sectionTitle = generateWords(3, 5);
-            for (let k = 0; k < nFilmInSection; k++) {
-                const seed = getRandomInt(1, 200000);
-                const row = movies[seed + k];
-                const params = [
-                    i,
-                    sectionTitle,
-                    j,
-                    row.movie_id,
-                    row.movie_title,
-                    row.movie_release_year,
-                    row.movie_image_url,
-                    row.director_name,
-                    row.movie_description,
-                ];
-                db.run(
-                    "insert into homepage values (?,?,?,?,?,?,?,?,?)",
-                    params,
-                    (err) => {}
-                );
-            }
-        }
-    }
-
-    res.json({ message: "DONE" });
-}); */

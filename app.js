@@ -145,14 +145,14 @@ app.get("/user/byId", (req, res) => {
 app.post("/user/insert", (req, res) => {
     const user = req.body;
     const params = [user.name, user.mail, user.age,user.gender, user.avatar,user.username,  user.password];
-    const sql = `insert into users values (NULL,?,?,?,?,?,?,?)`;
+    const sql = `insert into user values (NULL,?,?,?,?,?,?,?)`;
 
     db.run(sql, params, (err) => {
         if (err) {
             res.status(400).json({ error: err.message });
             return;
         }
-        db.get("select * from users where username = ?", [user.username], (err, row) => {
+        db.get("select * from user where username = ?", [user.username], (err, row) => {
             if (err) {
                 res.status(400).json({ error: err.message });
                 return;

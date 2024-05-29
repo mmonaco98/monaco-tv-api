@@ -125,7 +125,7 @@ app.get("/homepage/byUserId", (req, res) => {
 
 app.get("/user/byId", (req, res) => {
     const params = [req.query.id];
-    const sql = "select * from users where id = ?";
+    const sql = "select * from user where id = ?";
     db.get(sql, params, (err, row) => {
         if (err) {
             res.status(400).json({ error: err.message });
@@ -144,15 +144,15 @@ app.get("/user/byId", (req, res) => {
 
 app.post("/user/insert", (req, res) => {
     const user = req.body;
-    const params = [user.name, user.mail, user.age, user.avatar, user.gender, user.password];
-    const sql = `insert into users values (NULL,?,?,?,?,?,?)`;
+    const params = [user.name, user.mail, user.age,user.gender, user.avatar,user.username,  user.password];
+    const sql = `insert into users values (NULL,?,?,?,?,?,?,?)`;
 
     db.run(sql, params, (err) => {
         if (err) {
             res.status(400).json({ error: err.message });
             return;
         }
-        db.get("select * from users where mail = ? and password = ?", [user.mail, user.password], (err, row) => {
+        db.get("select * from users where username = ?", [user.username], (err, row) => {
             if (err) {
                 res.status(400).json({ error: err.message });
                 return;

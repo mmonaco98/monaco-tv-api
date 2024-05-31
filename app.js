@@ -1,7 +1,7 @@
 const express = require("express");
 const db = require("./src/helpers/database.js");
 const getRandomInt = require('./src/helpers/random.js')
-const [generateWords] = require('./src/helpers/loremIpsum.js')
+const [generateSentences,generateWords] = require('./src/helpers/loremIpsum.js')
 const app = express();
 const port = 8000;
 
@@ -162,6 +162,28 @@ app.post("/user/insert", (req, res) => {
                 data: row,
             });
         })
+    });
+
+});
+
+app.post("/user/login", (req, res) => {
+    const credentials = req.body;
+    const params = [credentials.username, credentials.password];
+    const sql = "select * from user where username = ? and password = ?";
+
+    db.get(sql, params, (err, row) => {
+        if (err) {
+            res.status(400).json({ error: err.message });
+            return;
+        }
+        if (row == undefined) {
+            res.status(400).json({ error: 'User does not exist.' });
+            return;
+        }
+        res.json({
+            message: "success",
+            data: row,
+        });
     });
 
 });

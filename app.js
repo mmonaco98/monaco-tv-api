@@ -26,6 +26,7 @@ app.get("/movie/byId", (req, res) => {
             data: row,
         });
     });
+    
 });
 
 app.get("/search/byTitle", (req, res) => {

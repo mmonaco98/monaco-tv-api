@@ -1,7 +1,11 @@
 const express = require("express");
 const db = require("./src/helpers/database.js");
-const getRandomInt = require('./src/helpers/random.js')
-const [generateSentences,generateWords] = require('./src/helpers/loremIpsum.js')
+const getRandomInt = require("./src/helpers/random.js");
+const [
+    generateSentences,
+    generateWords,
+] = require("./src/helpers/loremIpsum.js");
+const constants = require("./src/helpers/constants.js");
 const app = express();
 const port = 8000;
 
@@ -26,7 +30,6 @@ app.get("/movie/byId", (req, res) => {
             data: row,
         });
     });
-    
 });
 
 app.get("/search/byTitle", (req, res) => {
@@ -73,15 +76,12 @@ app.post("/homepage/create", (req, res) => {
                     db.run(
                         "insert into homepage values (?,?,?,?,?,?,?,?,?)",
                         params,
-                        (err) => { }
+                        (err) => {}
                     );
                 }
-                
             }
         }
     });
-    
-
 
     res.json({ message: "DONE" });
 });
@@ -105,13 +105,7 @@ app.get("/homepage/byUserId", (req, res) => {
                 type: "VideoCard",
             };
             moviesInSection.forEach((elem) => {
-                section.movies.push({
-                    movie_title: elem.movie_title,
-                    movie_description: elem.movie_description,
-                    movie_image_url: elem.movie_image_url,
-                    movie_release_year: elem.movie_release_year,
-                    director_name: elem.director_name,
-                });
+                section.movies.push(elem);
             });
             sections.push(section);
         }
@@ -133,7 +127,7 @@ app.get("/user/byId", (req, res) => {
             return;
         }
         if (row == undefined) {
-            res.status(400).json({ error: 'User does not exist.' });
+            res.status(400).json({ error: "User does not exist." });
             return;
         }
         res.json({
@@ -145,7 +139,15 @@ app.get("/user/byId", (req, res) => {
 
 app.post("/user/insert", (req, res) => {
     const user = req.body;
-    const params = [user.name, user.mail, user.age,user.gender, user.avatar,user.username,  user.password];
+    const params = [
+        user.name,
+        user.mail,
+        user.age,
+        user.gender,
+        user.avatar,
+        user.username,
+        user.password,
+    ];
     const sql = `insert into user values (NULL,?,?,?,?,?,?,?)`;
 
     db.run(sql, params, (err) => {
@@ -153,18 +155,21 @@ app.post("/user/insert", (req, res) => {
             res.status(400).json({ error: err.message });
             return;
         }
-        db.get("select * from user where username = ?", [user.username], (err, row) => {
-            if (err) {
-                res.status(400).json({ error: err.message });
-                return;
+        db.get(
+            "select * from user where username = ?",
+            [user.username],
+            (err, row) => {
+                if (err) {
+                    res.status(400).json({ error: err.message });
+                    return;
+                }
+                res.json({
+                    message: "success",
+                    data: row,
+                });
             }
-            res.json({
-                message: "success",
-                data: row,
-            });
-        })
+        );
     });
-
 });
 
 app.post("/user/login", (req, res) => {
@@ -178,7 +183,7 @@ app.post("/user/login", (req, res) => {
             return;
         }
         if (row == undefined) {
-            res.status(400).json({ error: 'User does not exist.' });
+            res.status(400).json({ error: "User does not exist." });
             return;
         }
         res.json({
@@ -186,32 +191,37 @@ app.post("/user/login", (req, res) => {
             data: row,
         });
     });
-
 });
-/* app.get("/addDescription", (req, res) => {
-    let ids;
-    db.all(
-        "select movie_id from movies where movie_id > 102000",
-        (err, rows) => {
-            ids = rows;
-            ids.forEach((element) => {
-                const value = generateSentences(getRandomInt(4, 7));
-                const sql =
-                    "update movies set movie_description = ? where movie_id = ?";
-                const params = [value, element.movie_id];
 
-                db.run(sql, params, (err) => {
-                    if (err) {
-                        console.log("ERROR: ", params);
-                        res.status(400).json({ error: err.message });
-                        return;
-                    }
-                });
+app.get("/addDescription", (req, res) => {
+    let ids;
+    db.all("select movie_id from movies", (err, rows) => {
+        ids = rows;
+        ids.forEach((element) => {
+            const genre = constants.genres[getRandomInt(0, 102)];
+            const language = constants.languages[getRandomInt(0, 29)];
+            const country = constants.countries[getRandomInt(0, 190)];
+            const nActors = getRandomInt(5, 10);
+            let actors = "";
+            for (let i = 0; i < nActors; i++) {
+                actors =
+                    (i != 0 ? "," : "") +
+                    actors +
+                    constants.actors[getRandomInt(0, 1160)];
+            }
+            const sql =
+                "update movies set movie_country = ?, movie_actors = ?, movie_genre = ?, movie_language = ? where movie_id = ?";
+            const params = [country, actors, genre, language, element.movie_id];
+
+            db.run(sql, params, (err) => {
+                if (err) {
+                    console.log("ERROR: ", params);
+                    res.status(400).json({ error: err.message });
+                    return;
+                }
             });
-        }
-    );
+        });
+    });
 
     res.json({ message: "DONE" });
-}); */
-
-
+});

@@ -197,14 +197,12 @@ app.post("/user/login", (req, res) => {
 
 app.get("/liked/isLiked", (req, res) => {
     const params = [Number(req.query.user_id), Number(req.query.movie_id)];
-    console.log(params);
     const sql = "select * from liked where user_id = ? and movie_id = ?";
     db.get(sql, params, (err, row) => {
         if (err) {
             res.status(400).json({ error: err.message });
             return;
         }
-        console.log(row);
         res.json({
             userId: req.query.user_id,
             movieId: req.query.movie_id,
@@ -418,7 +416,7 @@ app.get("/addData", (req, res) => {
                 const sql =
                     "update movies set movie_duration = ? where movie_id = ?";
                 const params = [duration, element.movie_id];
-                console.log(params);
+
                 db.run(sql, params, (err) => {
                     if (err) {
                         console.log("ERROR: ", params);

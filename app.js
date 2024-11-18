@@ -48,7 +48,7 @@ app.get("/search/byTitle", (req, res) => {
     });
 });
 
-//HOMEPAGE
+// HOMEPAGE
 
 app.post("/homepage/create", (req, res) => {
     const user_id = req.query.id;
@@ -116,7 +116,7 @@ app.get("/homepage/byUserId", (req, res) => {
     });
 });
 
-//USER
+// USER
 
 app.get("/user/byId", (req, res) => {
     const params = [req.query.id];
@@ -193,34 +193,255 @@ app.post("/user/login", (req, res) => {
     });
 });
 
-app.get("/addDescription", (req, res) => {
-    let ids;
-    db.all("select movie_id from movies", (err, rows) => {
-        ids = rows;
-        ids.forEach((element) => {
-            const genre = constants.genres[getRandomInt(0, 102)];
-            const language = constants.languages[getRandomInt(0, 29)];
-            const country = constants.countries[getRandomInt(0, 190)];
-            const nActors = getRandomInt(5, 10);
-            let actors = "";
-            for (let i = 0; i < nActors; i++) {
-                actors =
-                    (i != 0 ? "," : "") +
-                    actors +
-                    constants.actors[getRandomInt(0, 1160)];
-            }
-            const sql =
-                "update movies set movie_country = ?, movie_actors = ?, movie_genre = ?, movie_language = ? where movie_id = ?";
-            const params = [country, actors, genre, language, element.movie_id];
+// LIKED
 
-            db.run(sql, params, (err) => {
+app.get("/liked/isLiked", (req, res) => {
+    const params = [Number(req.query.user_id), Number(req.query.movie_id)];
+    console.log(params);
+    const sql = "select * from liked where user_id = ? and movie_id = ?";
+    db.get(sql, params, (err, row) => {
+        if (err) {
+            res.status(400).json({ error: err.message });
+            return;
+        }
+        console.log(row);
+        res.json({
+            userId: req.query.user_id,
+            movieId: req.query.movie_id,
+            isLiked: row == undefined ? false : true,
+        });
+    });
+});
+
+app.post("/liked/addLiked", (req, res) => {
+    const data = req.body;
+    const params = [data.user_id, data.movie_id];
+    const sql = "insert into liked values (NULL, ?, ?)";
+    db.run(sql, params, (err, row) => {
+        if (err) {
+            res.status(400).json({ error: err.message });
+            return;
+        }
+        db.get(
+            "select * from liked where user_id = ? and movie_id = ?",
+            params,
+            (err, row) => {
                 if (err) {
-                    console.log("ERROR: ", params);
                     res.status(400).json({ error: err.message });
                     return;
                 }
-            });
+                res.json({
+                    message: "success",
+                    data: row,
+                });
+            }
+        );
+    });
+});
+
+app.delete("/liked/removeLiked", (req, res) => {
+    const data = req.body;
+    const params = [data.user_id, data.movie_id];
+    const sql = "delete from liked where user_id = ? and movie_id = ?";
+
+    db.run(sql, params, (err, row) => {
+        if (err) {
+            res.status(400).json({ error: err.message });
+            return;
+        }
+        db.get(
+            "select * from liked where user_id = ? and movie_id = ?",
+            params,
+            (err, row) => {
+                if (err) {
+                    res.status(400).json({ error: err.message });
+                    return;
+                }
+                res.json({
+                    message: "success",
+                });
+            }
+        );
+    });
+});
+
+// DISLIKED
+
+app.get("/disliked/isDisliked", (req, res) => {
+    const params = [Number(req.query.user_id), Number(req.query.movie_id)];
+    const sql = "select * from disliked where user_id = ? and movie_id = ?";
+    db.get(sql, params, (err, row) => {
+        if (err) {
+            res.status(400).json({ error: err.message });
+            return;
+        }
+        res.json({
+            userId: req.query.user_id,
+            movieId: req.query.movie_id,
+            isDisliked: row == undefined ? false : true,
         });
+    });
+});
+
+app.post("/disliked/addDisliked", (req, res) => {
+    const data = req.body;
+    const params = [data.user_id, data.movie_id];
+    const sql = "insert into disliked values (NULL, ?, ?)";
+    db.run(sql, params, (err, row) => {
+        if (err) {
+            res.status(400).json({ error: err.message });
+            return;
+        }
+        db.get(
+            "select * from disliked where user_id = ? and movie_id = ?",
+            params,
+            (err, row) => {
+                if (err) {
+                    res.status(400).json({ error: err.message });
+                    return;
+                }
+                res.json({
+                    message: "success",
+                    data: row,
+                });
+            }
+        );
+    });
+});
+
+app.delete("/disliked/removeDisliked", (req, res) => {
+    const data = req.body;
+    const params = [data.user_id, data.movie_id];
+    const sql = "delete from disliked where user_id = ? and movie_id = ?";
+
+    db.run(sql, params, (err, row) => {
+        if (err) {
+            res.status(400).json({ error: err.message });
+            return;
+        }
+        db.get(
+            "select * from disliked where user_id = ? and movie_id = ?",
+            params,
+            (err, row) => {
+                if (err) {
+                    res.status(400).json({ error: err.message });
+                    return;
+                }
+                res.json({
+                    message: "success",
+                });
+            }
+        );
+    });
+});
+
+// FAVOURITE
+
+app.get("/favourite/isFavourite", (req, res) => {
+    const params = [Number(req.query.user_id), Number(req.query.movie_id)];
+    const sql = "select * from favourite where user_id = ? and movie_id = ?";
+    db.get(sql, params, (err, row) => {
+        if (err) {
+            res.status(400).json({ error: err.message });
+            return;
+        }
+        res.json({
+            userId: req.query.user_id,
+            movieId: req.query.movie_id,
+            isFavourite: row == undefined ? false : true,
+        });
+    });
+});
+
+app.post("/favourite/addFavourite", (req, res) => {
+    const data = req.body;
+    const params = [data.user_id, data.movie_id];
+    const sql = "insert into favourite values (NULL, ?, ?)";
+    db.run(sql, params, (err, row) => {
+        if (err) {
+            res.status(400).json({ error: err.message });
+            return;
+        }
+        db.get(
+            "select * from favourite where user_id = ? and movie_id = ?",
+            params,
+            (err, row) => {
+                if (err) {
+                    res.status(400).json({ error: err.message });
+                    return;
+                }
+                res.json({
+                    message: "success",
+                    data: row,
+                });
+            }
+        );
+    });
+});
+
+app.delete("/favourite/removeFavourite", (req, res) => {
+    const data = req.body;
+    const params = [data.user_id, data.movie_id];
+    const sql = "delete from favourite where user_id = ? and movie_id = ?";
+
+    db.run(sql, params, (err, row) => {
+        if (err) {
+            res.status(400).json({ error: err.message });
+            return;
+        }
+        db.get(
+            "select * from favourite where user_id = ? and movie_id = ?",
+            params,
+            (err, row) => {
+                if (err) {
+                    res.status(400).json({ error: err.message });
+                    return;
+                }
+                res.json({
+                    message: "success",
+                });
+            }
+        );
+    });
+});
+
+// GENERIC
+
+app.get("/addData", (req, res) => {
+    let ids;
+    db.all(
+        "select movie_id from movies where movie_id > 43815",
+        (err, rows) => {
+            ids = rows;
+            ids.forEach((element) => {
+                const duration = Math.floor(Math.random() * (300 - 100) + 100);
+                const sql =
+                    "update movies set movie_duration = ? where movie_id = ?";
+                const params = [duration, element.movie_id];
+                console.log(params);
+                db.run(sql, params, (err) => {
+                    if (err) {
+                        console.log("ERROR: ", params);
+                        res.status(400).json({ error: err.message });
+                        return;
+                    }
+                });
+            });
+        }
+    );
+
+    res.json({ message: "DONE" });
+});
+
+app.get("/createTable", (req, res) => {
+    const sql =
+        "create table favourite(id integer primary key, user_id integer not null, movie_id not null)";
+    db.run(sql, (err) => {
+        if (err) {
+            console.log("ERROR: ", err);
+            res.status(400).json({ error: err.message });
+            return;
+        }
     });
 
     res.json({ message: "DONE" });

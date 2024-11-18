@@ -7,7 +7,7 @@ const [
 ] = require("./src/helpers/loremIpsum.js");
 const constants = require("./src/helpers/constants.js");
 const app = express();
-const port = 8000;
+const port = 8001;
 
 app.use(express.json());
 
@@ -33,7 +33,7 @@ app.get("/movie/byId", (req, res) => {
 });
 
 app.get("/search/byTitle", (req, res) => {
-    const params = [req.query.title];
+    const params = [`${req.query.title}%`];
     const sql =
         "select * from movies where movie_title like ? order by movie_popularity desc";
     db.all(sql, params, (err, rows) => {

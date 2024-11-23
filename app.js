@@ -33,9 +33,9 @@ app.get("/movie/byId", (req, res) => {
 });
 
 app.get("/search/byTitle", (req, res) => {
-    const params = [`${req.query.title}%`];
+    const params = [`%${req.query.title}%`];
     const sql =
-        "select * from movies where movie_title like ? order by movie_popularity desc";
+        "select * from movies where movie_title like ? order by movie_popularity desc limit 30";
     db.all(sql, params, (err, rows) => {
         if (err) {
             res.status(400).json({ error: err.message });
@@ -347,6 +347,55 @@ app.get("/favourite/isFavourite", (req, res) => {
             userId: req.query.user_id,
             movieId: req.query.movie_id,
             isFavourite: row == undefined ? false : true,
+        });
+    });
+});
+
+const getFavourites = async (user_id) => {
+    new Promise((resolve) => {
+        const params = [user_id];
+        const sql = "select * from favourite where user_id = ?";
+        db.all(sql, params, (err, rows) => {
+            console.log(rows);
+            if (err) {
+                res.status(400).json({ error: err.message });
+                return;
+            }
+            resolve(rows);
+        });
+    });
+};
+
+app.get("/favourite/getFavourite", async (req, res) => {
+    const params = [Number(req.query.user_id)];
+    const sql =
+        "select * from favourite inner join movies on favourite.movie_id = movies.movie_id where user_id = ?";
+
+    db.all(sql, params, (err, rows) => {
+        if (err) {
+            res.status(400).json({ error: err.message });
+            return;
+        }
+
+        const sections = [];
+        const nMovie = rows.length;
+
+        for (let i = 0; i < Math.ceil(nMovie / 4); i++) {
+            const section = [];
+            for (let j = 0; j < 4; j++) {
+                const elem = rows[j + i * 4];
+                if (!!elem) {
+                    section.push(elem);
+                }
+            }
+            sections.push({
+                movies: section,
+                type: "VideoCard",
+            });
+        }
+        res.json({
+            message: "success",
+            data: sections,
         });
     });
 });
